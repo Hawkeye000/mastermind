@@ -9,15 +9,16 @@ class Player
 
   def guess
     puts "Enter your guess: "
-    guess = gets.chomp.split
+    guess = $stdin.gets.chomp
+    @code_guess = Code.new(guess)
 
     # if the user asks for "help"
-    if guess.any? { |input_word| input_word.downcase.include?("help") }
+    if @code_guess.sequence.any? { |input_word| input_word.downcase.include?("help") }
       Code.print_default_colors
     end
 
-    if guess.valid?
-      @guess_hist << guess
+    if @code_guess.valid?
+      @guess_hist << @code_guess
     end
   end
 
