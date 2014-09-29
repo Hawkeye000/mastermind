@@ -3,11 +3,11 @@ require_relative "../lib/code.rb"
 describe Code do 
 
   before do
-    @code = Code.new(4)
+    @code = Code.new
   end
 
   it "should contain only default colors" do
-    expect{ @code.sequence.all? { |code_item| code_item == Code.default_colors.any? } }.to be_true
+    expect{ @code.sequence.all? { |code_item| code_item == Code.default_colors.any?.to_s } }.to be_true
   end
 
   describe "when a sequence is valid" do

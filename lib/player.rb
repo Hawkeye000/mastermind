@@ -3,7 +3,7 @@ require_relative '../lib/code.rb'
 class Player
 
   def initialize
-    @code_to_guess = Code.new(4)
+    @code_to_guess = Code.new
     @guess_hist = []
   end
 

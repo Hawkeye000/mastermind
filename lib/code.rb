@@ -13,10 +13,14 @@ class Code
     @@default_colors.each { |color| puts color.to_s.colorize(color) }
   end
 
-  def initialize(sequence_length)
+  def initialize(input_string = "", sequence_length = 4)
     #creates a random color code corresponding to the @@default_colors indices
-    @sequence = []
-    sequence_length.times { @sequence << @@default_colors[rand(0..5)] }
+    @sequence = input_string.split(/[\s,']/)
+    puts @sequence
+
+    if @sequence.empty?
+      sequence_length.times { @sequence << @@default_colors[rand(0..5)].to_s }
+    end
   end
 
   def sequence
@@ -24,13 +28,13 @@ class Code
   end
 
   def display
-    @sequence.each { |x| print " " + "  ".colorize(:background => x) + " " }
+    @sequence.each { |x| print " " + "  ".colorize(:background => x.to_sym) + " " }
     print "\n"
   end
 
   def valid?
     @sequence.all? do |x|
-      @@default_colors.map { |color| color.to_sym }.any? { |y| y == x }
+      @@default_colors.map { |color| color.to_s }.any? { |y| y == x }
     end
   end
 
