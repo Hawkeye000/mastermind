@@ -1,22 +1,37 @@
 class Code 
 
-  @@default_colors = [:light_red, :yellow, :light_yellow, :green, :blue, :magenta]
+  require 'colorize'
+
+  @@default_colors = [:red, :yellow, :white, :green, :blue, :magenta]
 
   def self.default_colors
     @@default_colors
   end
 
-  def initialize
-    @sequence = Array.new(4)
+  def self.print_default_colors
+    puts "Available color options are:"
+    @@default_colors.each { |color| puts color.to_s.colorize(color) }
   end
 
-  def randomize 
+  def initialize(sequence_length)
     #creates a random color code corresponding to the @@default_colors indices
-    @sequence.length.times { |i| @sequence[i] = @@default_colors[rand(0..5)]  }
+    @sequence = []
+    sequence_length.times { @sequence << @@default_colors[rand(0..5)] }
   end
 
   def sequence
     @sequence
   end
 
-end
+  def display
+    @sequence.each { |x| print " " + "  ".colorize(:background => x) + " " }
+    print "\n"
+  end
+
+  def valid?
+    @sequence.all? do |x|
+      @@default_colors.map { |color| color.to_sym }.any? { |y| y == x }
+    end
+  end
+
+end 
