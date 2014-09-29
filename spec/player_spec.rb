@@ -26,23 +26,6 @@ describe Player do
       expect(@player.guess_hist.length).to be > 0
     end
 
-    before do
-      $stdin = StringIO.new("help")
-      @player.guess
-    end
-
-    after do
-      $stdin = STDIN
-    end
-
-    it "should display the available colors when asked for 'help'" do
-      printed = capture_stdout do
-        @player.guess
-      end
-
-      printed.should include(Code.default_colors.each { |color| color.to_s} )
-    end
-
   end
 
 end
