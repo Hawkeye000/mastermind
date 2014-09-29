@@ -15,7 +15,8 @@ class Code
 
   def initialize(input_string = "", sequence_length = 4)
     #creates a random color code corresponding to the @@default_colors indices
-    @sequence = input_string.split(/[\s,']/)
+    @sequence = input_string.split(/\W+/)
+    print @sequence
 
     if @sequence.empty?
       sequence_length.times { @sequence << @@default_colors[rand(0..5)].to_s }
@@ -36,5 +37,10 @@ class Code
       @@default_colors.map { |color| color.to_s }.any? { |y| y == x }
     end
   end
+
+  def compare(another_code)
+    @sequence.zip(another_code.sequence).map { |x, y| x <=> y }.count(0)
+  end
+
 
 end 

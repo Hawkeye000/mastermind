@@ -1,11 +1,13 @@
 require_relative '../lib/code.rb'
 require_relative '../lib/player.rb'
 
-@code = Code.new
+@code1 = Code.new
 
-@code.display
+@code1.display
 
-@code = Code.new("red red blue blue")
+@code2 = Code.new
 
-@code.display
+@code2.display
+
+puts @code1.compare(@code2)
 
