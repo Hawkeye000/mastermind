@@ -16,7 +16,6 @@ class Code
   def initialize(input_string = "", sequence_length = 4)
     #creates a random color code corresponding to the @@default_colors indices
     @sequence = input_string.split(/[\s,']/)
-    puts @sequence
 
     if @sequence.empty?
       sequence_length.times { @sequence << @@default_colors[rand(0..5)].to_s }

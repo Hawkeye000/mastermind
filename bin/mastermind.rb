@@ -5,3 +5,7 @@ require_relative '../lib/player.rb'
 
 @code.display
 
+@code = Code.new("red red blue blue")
+
+@code.display
+
