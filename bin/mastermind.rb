@@ -1,3 +1,7 @@
-require 'colorize'
+require_relative '../lib/code.rb'
+require_relative '../lib/player.rb'
 
-puts String.color_matrix
+@code = Code.new(4)
+
+@player = Player.new
+@player.guess

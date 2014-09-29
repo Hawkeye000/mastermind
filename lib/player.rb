@@ -16,7 +16,9 @@ class Player
       Code.print_default_colors
     end
 
-    @guess_hist << guess
+    if guess.valid?
+      @guess_hist << guess
+    end
   end
 
   def guess_hist
