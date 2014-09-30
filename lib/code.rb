@@ -42,5 +42,17 @@ class Code
     @sequence.zip(another_code.sequence).map { |x, y| x <=> y }.count(0)
   end
 
+  def check_presence(another_code)
+    colors_present = 0
+    @sequence.each { |x| colors_present += 1 if another_code.sequence.include?(x) }
+    return colors_present
+  end
 
+  def color_and_position(another_code)
+    self.compare(another_code)
+  end
+
+  def color_but_not_position(another_code)
+    return self.check_presence(another_code) - self.compare(another_code)
+  end
 end 

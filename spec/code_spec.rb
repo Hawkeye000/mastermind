@@ -29,15 +29,27 @@ describe Code do
 
   describe "when codes are compared" do
 
-    it "should know when a correct color is in the correct location" do
+    before do
       @code1 = Code.new("red, blue, green, white", )
       @code2 = Code.new("red, green, blue, blue", )
+    end
+
+    it "should know when a correct color is in the correct location" do
       expect(@code1.compare(@code2)).to eq(1)
     end
 
+    it "should know how many colors at least exist that match" do
+      expect(@code1.check_presence(@code2)).to eq(3)
+    end
+
+    it "should know the number of black pegs to place" do
+      expect(@code1.color_and_position(@code2)).to eq(1)
+    end
+
+    it "should know the number of white pegs to place" do
+      expect(@code.color_but_not_position(@code2)).to eq(2)
+    end
+
   end
-
-
-
 
 end
