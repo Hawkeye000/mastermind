@@ -17,6 +17,10 @@ class Player
       Code.print_default_colors
     end
 
+    if @code_guess.length != @code_to_guess
+      print "The code must be " + @code_to_guess.length + " colors.\n"
+    end
+
     if @code_guess.valid?
       @guess_hist << @code_guess
       return @code_guess
@@ -33,7 +37,7 @@ class Player
   end
 
   def has_won?
-    @code_hist.any? { |guess| guess == @code_to_guess }
+    @guess_hist.any? { |guess| guess == @code_to_guess }
   end
 
 end
