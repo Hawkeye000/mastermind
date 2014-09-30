@@ -15,7 +15,7 @@ describe Player do
 
     before do
       $stdin = StringIO.new("red blue red blue\n")
-      @player.guess
+      @guessed_code = @player.guess
     end
 
     after do
@@ -24,6 +24,10 @@ describe Player do
 
     it "should add valid guesses to the history" do
       expect(@player.guess_hist.length).to be > 0
+    end
+
+    it "should return the guess as a code object" do
+      expect(@guessed_code).to be_a(Code)
     end
 
   end

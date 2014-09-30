@@ -1,13 +1,14 @@
 require_relative '../lib/code.rb'
 require_relative '../lib/player.rb'
 
-@code1 = Code.new
+@player = Player.new
 
-@code1.display
+loop do 
 
-@code2 = Code.new
+  @player.code_to_guess.display_difference(@player.guess)
 
-@code2.display
 
-puts @code1.compare(@code2)
+
+end
+
 
