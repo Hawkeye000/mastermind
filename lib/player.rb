@@ -8,7 +8,7 @@ class Player
   end
 
   def guess
-    puts "Enter your guess: (type 'help' for a list of options)"
+    puts "Enter your guess:"
     guess = $stdin.gets.chomp
     @code_guess = Code.new(guess)
 
