@@ -8,17 +8,17 @@ class Player
   end
 
   def guess
-    puts "Enter your guess: "
+    puts "Enter your guess: (type 'help' for a list of options)"
     guess = $stdin.gets.chomp
     @code_guess = Code.new(guess)
 
     # if the user asks for "help"
     if @code_guess.sequence.any? { |input_word| input_word.downcase.include?("help") }
-      Code.print_default_colors
+      return Code.print_default_colors
     end
 
     if @code_guess.length != @code_to_guess.length
-      print "The code must be " + @code_to_guess.length.to_s + " colors.\n"
+      return print "The code must be #{@code_to_guess.length.to_s} colors.\n"
     end
 
     if @code_guess.valid?
