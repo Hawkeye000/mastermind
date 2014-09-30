@@ -27,9 +27,9 @@ class Code
     @sequence
   end
 
-  def display
+  def display(endline = "\n")
     @sequence.each { |x| print " " + "  ".colorize(:background => x.to_sym) + " " }
-    print "\n"
+    print endline
   end
 
   def valid?
@@ -60,13 +60,13 @@ class Code
     return self.check_presence(another_code) - self.compare(another_code)
   end
 
-  def display_differnce(another_code)
+  def display_differnce(another_code, endline = "\n")
     black_pegs = color_and_position(another_code)
     white_pegs = color_but_not_position(another_code)
 
-    black_pegs.times { print " " + "  ".colorize(:background => :black) }
-    white_pegs.times { print " " + "  ".colorize(:background => :white) }
-    print "\n"
+    black_pegs.times { print " " + " ".colorize(:background => :black) }
+    white_pegs.times { print " " + " ".colorize(:background => :white) }
+    print endline
   end
 
 end 
