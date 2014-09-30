@@ -18,12 +18,14 @@ class Player
     end
 
     if @code_guess.length != @code_to_guess.length
-      print "The code must be " + @code_to_guess.length + " colors.\n"
+      print "The code must be " + @code_to_guess.length.to_s + " colors.\n"
     end
 
     if @code_guess.valid?
       @guess_hist << @code_guess
       return @code_guess
+    else
+      puts "Please enter a valid code!"
     end
 
   end
