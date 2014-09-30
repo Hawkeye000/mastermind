@@ -30,6 +30,10 @@ class Player
     @code_to_guess
   end
 
+  def has_won?
+    @code_hist.any? { |guess| guess == @code_to_guess }
+  end
+
 end
 
 

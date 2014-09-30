@@ -42,6 +42,10 @@ class Code
     @sequence.zip(another_code.sequence).map { |x, y| x <=> y }.count(0)
   end
 
+  def ==(another_code)
+    self.compare(another_code) == @sequence.length 
+  end
+
   def check_presence(another_code)
     colors_present = 0
     @sequence.each { |x| colors_present += 1 if another_code.sequence.include?(x) }
@@ -55,4 +59,14 @@ class Code
   def color_but_not_position(another_code)
     return self.check_presence(another_code) - self.compare(another_code)
   end
+
+  def display_differnce(another_code)
+    black_pegs = color_and_position(another_code)
+    white_pegs = color_but_not_position(another_code)
+
+    black_pegs.times { print " " + "  ".colorize(:background => :black) }
+    white_pegs.times { print " " + "  ".colorize(:background => :white) }
+    print "\n"
+  end
+
 end 

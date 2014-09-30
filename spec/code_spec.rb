@@ -47,9 +47,16 @@ describe Code do
     end
 
     it "should know the number of white pegs to place" do
-      expect(@code.color_but_not_position(@code2)).to eq(2)
+      expect(@code1.color_but_not_position(@code2)).to eq(2)
     end
 
+    it "should know when codes are equal" do
+      expect(@code1==@code1).to be_true
+    end
+
+    it "should know when codes are not equal" do
+      expect(@code1==@code2).to_not be_true
+    end
   end
 
 end
