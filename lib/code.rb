@@ -48,7 +48,15 @@ class Code
 
   def check_presence(another_code)
     colors_present = 0
-    @sequence.each { |x| colors_present += 1 if another_code.sequence.include?(x) }
+    compare_sequence = another_code.sequence.clone
+
+    @sequence.each do |x|
+      if compare_sequence.include?(x)
+        colors_present += 1
+        compare_sequence.delete_at(compare_sequence.find_index(x))
+      end
+    end
+
     return colors_present
   end
 
