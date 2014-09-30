@@ -17,7 +17,7 @@ class Player
       Code.print_default_colors
     end
 
-    if @code_guess.length != @code_to_guess
+    if @code_guess.length != @code_to_guess.length
       print "The code must be " + @code_to_guess.length + " colors.\n"
     end
 

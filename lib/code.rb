@@ -38,6 +38,10 @@ class Code
     end
   end
 
+  def length
+    @sequence.length
+  end
+
   def compare(another_code)
     @sequence.zip(another_code.sequence).map { |x, y| x <=> y }.count(0)
   end
