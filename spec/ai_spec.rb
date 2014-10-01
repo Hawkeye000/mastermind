@@ -30,6 +30,17 @@ describe AI do
         expect([first_guess[0], first_guess[2]]).to eq([first_guess[1], first_guess[3]])
       end
 
+      describe "reducing guessables after first guess" do
+       
+        before { @ai.reduce_guessables }
+
+        subject { @ai.guessables }
+
+        it { should_not include(@ai.guess_hist[0]) }
+
+      end
+
+
     end
 
   end
