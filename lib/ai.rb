@@ -1,3 +1,5 @@
+require_relative "player.rb"
+
 class AI < Player
 
   CODE_LEN = 4
