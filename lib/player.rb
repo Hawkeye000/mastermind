@@ -10,7 +10,7 @@ class Player
   def guess
     puts "Enter your guess:"
     guess = $stdin.gets.chomp
-    @code_guess = Code.new(guess)
+    @code_guess = Code.new(guess.downcase)
 
     # if the user asks for "help"
     if @code_guess.sequence.any? { |input_word| input_word.downcase.include?("help") }
