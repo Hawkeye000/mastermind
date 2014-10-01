@@ -22,7 +22,10 @@ class AI < Player
       @code_guess = Code.new(guess.join(" "))
     end
 
-    @guess_hist << @code_guess
+    if @code_guess.valid?
+      @guess_hist << @code_guess
+      return @code_guess
+    end
 
   end
 
