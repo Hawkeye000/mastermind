@@ -29,4 +29,12 @@ class AI < Player
 
   end
 
+  def reduce_guessables(guess = @guess_hist.last)
+    # code for applying the Knuth algorithm
+    black_pegs = guess.color_and_position(@code_to_guess)
+    white_pegs = guess.color_but_not_position(@code_to_guess)
+
+  end
+
+
 end
