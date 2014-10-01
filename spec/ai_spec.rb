@@ -8,6 +8,11 @@ describe AI do
     expect(@ai.instance_variable_get(:@guessables)).to be_true
   end
 
+  it "should store the selection map as codes" do
+    index = rand(0..@ai.guessables.length)
+    expect(@ai.guessables[index]).to be_a(Code)
+  end
+
   describe "making guesses" do
 
     describe "the first guess" do

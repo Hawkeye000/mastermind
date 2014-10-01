@@ -6,8 +6,13 @@ class AI < Player
 
   def initialize 
     # map out all of the possible guesses for 
-    @guessables = Code.default_colors.repeated_combination(CODE_LEN).to_a
+    possible_combos = Code.default_colors.repeated_combination(CODE_LEN).to_a
+    @guessables = possible_combos.map! { |x| Code.new(x.join(" ")) }
     super
+  end
+
+  def guessables
+    @guessables
   end
 
   def guess
@@ -34,6 +39,21 @@ class AI < Player
     black_pegs = guess.color_and_position(@code_to_guess)
     white_pegs = guess.color_but_not_position(@code_to_guess)
 
+<<<<<<< HEAD
+=======
+    # test each element of @guessables against the guess made
+    @guessables.each_with_index do |x, i|
+      #remove the exact guess from the list of guessables
+      if x == guess
+        @guessables.delete_at(i)
+      end
+
+      unless guess.color_and_position(x) == black_pegs  && guess.color_but_not_position(x) == white_pegs
+        # remove all from map that does not have the same number of white and black pegs when compared to the guess
+        @guessables.delete_at(i)
+      end
+    end
+>>>>>>> master
   end
 
 
