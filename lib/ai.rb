@@ -39,8 +39,6 @@ class AI < Player
     black_pegs = guess.color_and_position(@code_to_guess)
     white_pegs = guess.color_but_not_position(@code_to_guess)
 
-<<<<<<< HEAD
-=======
     # test each element of @guessables against the guess made
     @guessables.each_with_index do |x, i|
       #remove the exact guess from the list of guessables
@@ -53,7 +51,6 @@ class AI < Player
         @guessables.delete_at(i)
       end
     end
->>>>>>> master
   end
 
 
