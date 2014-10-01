@@ -25,6 +25,9 @@ class AI < Player
       guess[0], guess[2] = Code.default_colors[rand(0..5)].to_s, Code.default_colors[rand(0..5)].to_s
       guess[1], guess[3] = guess[0], guess[2]
       @code_guess = Code.new(guess.join(" "))
+    else
+      # otherwise select a code remaining from @guessables
+      @code_guess = @guessables[rand(0..@guessables.length)]
     end
 
     if @code_guess.valid?
