@@ -2,13 +2,15 @@ require_relative '../lib/code.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/ai.rb'
 
+TURNS = 12
+DELAY_BTWN_TURNS = 0.5
+
 @player = Player.new
 @ai = AI.new
 @ai.code_to_guess = nil
 
+# Uncomment the next line to display all the possible color combos
 # @ai.guessables.each { |x| x.display }
-
-TURNS = 12
 
 begin 
   puts "Enter a 4-color code in this format '[color] [color] [color] [color]' to challenge the computer"
@@ -16,7 +18,7 @@ begin
   @ai.code_to_guess = @player.guess
 end until @ai.code_to_guess.instance_of?(Code)
 
-puts "You Entered:"
+print "You Entered:\n\n"
 @ai.code_to_guess.display
 print "\n\n"
 
@@ -52,6 +54,6 @@ loop do
     break
   end
 
-  sleep(2)
+  sleep(DELAY_BTWN_TURNS)
 
 end
