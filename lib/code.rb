@@ -72,6 +72,10 @@ class Code
     return self.check_presence(another_code) - self.compare(another_code)
   end
 
+  def score(another_code)
+    return self.color_and_position(another_code), self.color_but_not_position(another_code)
+  end
+
   def display_difference(another_code, endline = "\n")
     black_pegs = color_and_position(another_code)
     white_pegs = color_but_not_position(another_code)

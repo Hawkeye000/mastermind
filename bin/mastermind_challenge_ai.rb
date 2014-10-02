@@ -4,6 +4,9 @@ require_relative '../lib/ai.rb'
 
 @player = Player.new
 @ai = AI.new
+@ai.code_to_guess = nil
+
+# @ai.guessables.each { |x| x.display }
 
 TURNS = 12
 
@@ -12,6 +15,16 @@ begin
   puts "Type 'help' to see a list of available colors"
   @ai.code_to_guess = @player.guess
 end until @ai.code_to_guess.instance_of?(Code)
+
+puts "You Entered:"
+@ai.code_to_guess.display
+print "\n\n"
+
+sleep(0.5)
+
+print "The AI will now guess...\n\n"
+
+sleep(0.5)
 
 loop do 
 
@@ -30,11 +43,15 @@ loop do
   @guess.display("    ")
   @guess.display_difference(@ai.code_to_guess)
 
+  @ai.reduce_guessables # unless (@ai.guessables.length < TURNS - @ai.guess_hist.length)
+
+  print "\n"
+
   if @ai.has_won?
     puts "AI has solved the code!"
     break
   end
 
-  wait(2)
+  sleep(2)
 
 end
