@@ -6,6 +6,7 @@ require_relative '../lib/player.rb'
 TURNS = 12
 
 puts "Type 'help' to see a list of available colors"
+puts "Enter your guess in the format: '[color] [color] [color] [color]\n"
 
 loop do 
 
