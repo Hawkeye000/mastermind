@@ -38,8 +38,18 @@ describe AI do
 
         it { should_not include(@ai.guess_hist[0]) }
 
-      end
+        describe "subsequent guesses" do
 
+          before do 2.times { @ai.guess } end
+
+          it "should choose a guess from @guessables" do
+            expect(@ai.guessables).to include(@ai.guess_hist[1])
+            expect(@ai.guessables).to include(@ai.guess_hist[2])
+          end
+
+        end
+      
+      end
 
     end
 
