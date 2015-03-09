@@ -2,32 +2,35 @@ require_relative "../lib/code.rb"
 
 describe Code do 
 
-  before do
-    @code = Code.new
-  end
+  let(:code) { Code.new }
+    #code.sequence.each{|p| print p; puts}
 
   it "should contain only default colors" do
-    expect{ @code.sequence.all? { |code_item| code_item == Code.default_colors.any?.to_s } }.to be_true
+    result = code.sequence.all? { |c| Code.default_colors.member?(c) }
+    expect(result).to be_truthy
   end
 
-  describe "when a sequence is valid" do
-    subject { @code.valid? }
-    it { should be_true }
-    subject { Code.new("blue, red, green, white").valid? }
-    it { should be_true }
-  end
+  describe '#valid?' do
+    let(:code) { Code.new }
 
-  describe "when a sequence is invalid" do
-    before do
-      @code.sequence[1] = "apple"
+    context "valid sequence," do
+      it 'returns true' do
+        expect(code.valid?).to be_truthy
+      end
+      it 'returns true on anonymous objects too' do
+        expect(Code.new('blue, red, green, white').valid?).to be_truthy
+      end
     end
 
-    subject { @code.valid? }
-
-    it { should_not be_true }
+    context "invalid sequence," do
+      it 'returns false when not valid sequence' do
+        code.sequence[1] = 'apple'
+        expect(code.valid?).to be_falsey
+      end
+    end
   end
 
-  describe "when codes are compared" do
+  describe "comparing objects" do
 
     before do
       @code1 = Code.new("red, blue, green, white", )
@@ -51,11 +54,11 @@ describe Code do
     end
 
     it "should know when codes are equal" do
-      expect(@code1==@code1).to be_true
+      expect(@code1 == @code1).to be_truthy
     end
 
     it "should know when codes are not equal" do
-      expect(@code1==@code2).to_not be_true
+      expect(@code1==@code2).to be_falsey
     end
   end
 
