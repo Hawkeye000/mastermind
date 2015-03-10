@@ -5,7 +5,7 @@ describe AI do
   before { @ai = AI.new }
   
   it "should contain a selection map" do
-    expect(@ai.instance_variable_get(:@guessables)).to be_true
+    expect(@ai.instance_variable_get(:@guessables)).to be_truthy
   end
 
   it "should store the selection map as codes" do
