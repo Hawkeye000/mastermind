@@ -2,8 +2,12 @@ Mastermind
 ==========
 
 **Requires 'Colorize' Gem**
-Install with $ gem install colorize
+Install with ```$ gem install colorize```
 
+Or run ```bundle install``` to install colorize and the required RSpec version for testing.  
+
+Running
+-------
 This file plays the codebreaker game "Mastermind"
 
 Play by running "bin/mastermind.rb" through the ruby interpreter.  You will type a 'code' of colors and watch the code be printed with appropriate feedback of how close you are to breaking it.  The codes are entered by typing the full word.  Example: "red white magenta yellow"
@@ -27,3 +31,5 @@ It takes the following steps:
 4. Repeat until it wins.
 
 As this game is an excercise in illustrating software engineering, OOP, and project organization rather than computer science, the code is not optimized for minimal number of guesses.
+
+See [Mastermind Algorithm] (http://en.wikipedia.org/wiki/Mastermind_%28board_game%29#Five-guess_algorithm) on Wikipedia for more info.  
