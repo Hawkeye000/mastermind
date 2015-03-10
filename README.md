@@ -25,6 +25,7 @@ AI Algorithm Explanation
 The AI algorithm is similar to the one developed by Donald Knuth which solves the game in approximately 4.340 turns, however, unlike Knuth's algorithm, it does not rank subsequent guesses to maximize its chance of getting the code right.  Instead it just selects from the remaining possible codes randomly.  
 
 It takes the following steps:
+
 1. Guess a code with 'AABB' format (does allow 'AAAA' format too). Code is selected randomly.
 2. Remove any code from the set of all codes that yield the same feedback as the last guess against the code to guess, but using the last guess as the code to compare to.
 3. Make a random guess from the remaining set.
