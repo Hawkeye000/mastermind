@@ -4,6 +4,21 @@ class Code
 
   @@default_colors = [:red, :yellow, :white, :green, :blue, :magenta]
 
+  def initialize(input_string = "", sequence_length = 4)
+    #creates a random color code corresponding to the @@default_colors indices
+    @sequence = input_string.split(/\W+/).map{ |color| color.to_sym }
+
+    if @sequence.empty?
+      sequence_length.times { @sequence << @@default_colors[rand(0..5)] }
+    end
+  end
+
+  def valid?
+    @sequence.all? do |x|
+      @@default_colors.any? { |y| y == x }
+    end
+  end
+
   def self.default_colors
     @@default_colors
   end
@@ -13,29 +28,15 @@ class Code
     @@default_colors.each { |color| puts color.to_s.colorize(color) }
   end
 
-  def initialize(input_string = "", sequence_length = 4)
-    #creates a random color code corresponding to the @@default_colors indices
-    @sequence = input_string.split(/\W+/)
-    # print @sequence
-
-    if @sequence.empty?
-      sequence_length.times { @sequence << @@default_colors[rand(0..5)].to_s }
-    end
-  end
-
   def sequence
     @sequence
   end
 
   def display(endline = "\n")
-    @sequence.each { |x| print " " + "  ".colorize(:background => x.to_sym) + " " }
-    print endline
-  end
-
-  def valid?
-    @sequence.all? do |x|
-      @@default_colors.map { |color| color.to_s }.any? { |y| y == x }
+    @sequence.each do |x|
+      print " " + "  ".colorize(:background => x.to_sym) + " "
     end
+    print endline
   end
 
   def length

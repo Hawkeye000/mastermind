@@ -13,7 +13,7 @@ class Player
     @code_guess = Code.new(guess.downcase)
 
     # if the user asks for "help"
-    if @code_guess.sequence.any? { |input_word| input_word.downcase.include?("help") }
+    if @code_guess.sequence.any? { |input_word| input_word.to_s.downcase.include?("help") }
       return Code.print_default_colors
     end
 
